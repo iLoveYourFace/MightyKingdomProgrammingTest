@@ -61,9 +61,11 @@
      <Compile Include="Assets\Scripts\GamplayHUD.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\LevelScroll.cs" />
+     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\SceneManagerScript.cs" />
      <Compile Include="Assets\Scripts\ScoreTracking.cs" />
+     <Compile Include="Assets\Scripts\SetInactive.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/TechFast Australia/Desktop/MightyKingdomProgrammingTest/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

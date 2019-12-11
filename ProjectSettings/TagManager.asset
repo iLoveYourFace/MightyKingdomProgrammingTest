@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlatformEnd
   - DeathTrigger
+  - Hazard
+  - Coin
   layers:
   - Default
   - TransparentFX

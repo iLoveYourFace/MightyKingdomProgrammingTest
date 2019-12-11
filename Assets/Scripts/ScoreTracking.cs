@@ -6,12 +6,13 @@ public class ScoreTracking : MonoBehaviour
 {
     public int coinsPickedUp;
     private GamplayHUD _gamplayHud;
+    public bool isDead = false;
 
     public int score;
     void Start()
     {
         _gamplayHud = FindObjectOfType<GamplayHUD>();
-        InvokeRepeating(nameof(AddToScore),0,1);
+        StartCoroutine(AddToScoreEverySecond());
     }
 
     public void AddToScore(int scoreToAdd)
@@ -24,6 +25,16 @@ public class ScoreTracking : MonoBehaviour
     {
         score += 100;
         _gamplayHud.UpdateScoreText(score);
+        StartCoroutine(AddToScoreEverySecond());
+    }
+
+    IEnumerator AddToScoreEverySecond()
+    {
+        yield return new WaitForSeconds(1f);
+        if (!isDead)
+        {
+            AddToScore();
+        }
     }
     
     public void AddToCoinsPickedUp(int coinsAdded)
