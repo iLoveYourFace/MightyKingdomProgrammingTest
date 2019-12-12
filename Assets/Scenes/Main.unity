@@ -185,6 +185,7 @@ MonoBehaviour:
   score: {fileID: 1487695565}
   coinsCollected: {fileID: 1671139855}
   endScreen: {fileID: 1558278338}
+  endScreenText: {fileID: 1388451123}
 --- !u!114 &26050849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +237,7 @@ MonoBehaviour:
     pitch: 0.8
     pitchVariance: 0
     source: {fileID: 0}
-    volume: 1
+    volume: 0.8
     volumeVariance: 0
   - clip: {fileID: 8300000, guid: 911e6f67b2b5d664493ef2da34bb0d06, type: 3}
     loop: 0
@@ -252,7 +253,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     source: {fileID: 0}
-    volume: 1
+    volume: 0.5
     volumeVariance: 0
   - clip: {fileID: 8300000, guid: 1ef6fa21c8523684aa4c6d94ab82dbb7, type: 3}
     loop: 1
@@ -356,6 +357,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &199948351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 199948352}
+  - component: {fileID: 199948354}
+  - component: {fileID: 199948353}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &199948352
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199948351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1671139854}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -339, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &199948353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199948351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -5678512169640294588, guid: 9b2d3a48cc026a240bec82483c93433a,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &199948354
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199948351}
+  m_CullTransparentMesh: 0
 --- !u!1 &217901953
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,7 +3543,7 @@ GameObject:
   - component: {fileID: 1388451124}
   - component: {fileID: 1388451123}
   m_Layer: 5
-  m_Name: EndScreen
+  m_Name: EndScreenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3490,8 +3565,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.6015625, y: -128.79993}
-  m_SizeDelta: {x: -686, y: -1706.6001}
+  m_AnchoredPosition: {x: 13.6015625, y: -4.3500977}
+  m_SizeDelta: {x: -686, y: -2526.0999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388451123
 MonoBehaviour:
@@ -3524,7 +3599,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: YOU DIED
+  m_Text: 'YOU SCORED
+
+    00000
+
+    BEFORE DYING'
 --- !u!222 &1388451124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3868,13 +3947,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 199948352}
   m_Father: {fileID: 603323702}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 295, y: -49}
+  m_AnchoredPosition: {x: 406, y: -79}
   m_SizeDelta: {x: 552.74, y: 83.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671139855
@@ -3908,7 +3988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Coins = 0
+  m_Text: 0
 --- !u!222 &1671139856
 CanvasRenderer:
   m_ObjectHideFlags: 0
