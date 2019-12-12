@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     
     private bool tryJump;
     private Rigidbody2D rb;
+    private bool isGrounded;
+
+    public Animator _animator;
     
     private void Awake()
     {
@@ -23,15 +27,26 @@ public class PlayerMovement : MonoBehaviour
         {
             tryJump = true;
         }
+
+        if (isGrounded)
+        {
+            _animator.SetBool("Fall", false);
+            _animator.SetBool("Jump", false);
+        }
     }
     private void FixedUpdate()
     {
-        if (tryJump)
+        if (tryJump && isGrounded)
         {
             Jump();
             tryJump = false;
         }
 
+        if (rb.velocity.y < -1f)
+        {
+            FallAnimtion();
+        }
+        
         if (rb.velocity.y < 0f)
         {
             rb.gravityScale = fallSpeed;
@@ -39,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             rb.gravityScale = smallJumpVelocity;
+            JumpAnimation();
         }
         else
         {
@@ -47,6 +63,35 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
+        JumpAnimation();
         rb.AddForce(Vector2.up * jumpVelocity , ForceMode2D.Impulse);
+    }
+
+    void JumpAnimation()
+    {
+        _animator.SetBool("Fall", false);
+        _animator.SetBool("Jump", true);
+    }
+
+    void FallAnimtion()
+    {
+        _animator.SetBool("Fall", true);
+        _animator.SetBool("Jump", false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }

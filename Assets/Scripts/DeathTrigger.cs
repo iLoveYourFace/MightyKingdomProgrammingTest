@@ -7,17 +7,26 @@ public class DeathTrigger : MonoBehaviour
 {
     private GamplayHUD _gamplayHud;
     private ScoreTracking _scoreTracking;
+    private SoundManager _soundManager;
+
+    private void Awake()
+    {
+        _soundManager = FindObjectOfType<SoundManager>();
+        _gamplayHud = FindObjectOfType<GamplayHUD>();
+        _scoreTracking = FindObjectOfType<ScoreTracking>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Hazard"))
+        if (other.CompareTag("Player"))
         {
+            _soundManager.Play("Dead");
+            _soundManager.StopSound("Theme");
+            _soundManager.Play("DeadTheme");
             Debug.Log("Player died");
-            _gamplayHud = FindObjectOfType<GamplayHUD>();
-            _scoreTracking = FindObjectOfType<ScoreTracking>();
-            
             _gamplayHud.IsDead();
             _scoreTracking.isDead = true;
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

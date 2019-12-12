@@ -16,5 +16,9 @@ public class SetInactive : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        else if(other.CompareTag("Player"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }
