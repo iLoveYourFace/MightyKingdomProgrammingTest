@@ -67,6 +67,8 @@
      <Compile Include="Assets\Scripts\SceneManagerScript.cs" />
      <Compile Include="Assets\Scripts\ScoreTracking.cs" />
      <Compile Include="Assets\Scripts\SetInactive.cs" />
+     <Compile Include="Assets\Scripts\Shop\Shop.cs" />
+     <Compile Include="Assets\Scripts\Shop\ShopItem.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/TechFast Australia/Desktop/MightyKingdomProgrammingTest/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

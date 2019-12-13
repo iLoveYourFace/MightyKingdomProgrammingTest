@@ -18,6 +18,10 @@
           <e p="SceneManagerScript.cs" t="Include" />
           <e p="ScoreTracking.cs" t="Include" />
           <e p="SetInactive.cs" t="Include" />
+          <e p="Shop" t="Include">
+            <e p="Shop.cs" t="Include" />
+            <e p="ShopItem.cs" t="Include" />
+          </e>
           <e p="SoundManager.cs" t="Include" />
         </e>
       </e>
