@@ -13,6 +13,7 @@ public class Shop : MonoBehaviour
  //Showing the catalog of items
  [SerializeField] private Transform shopContainer;
  [SerializeField] private GameObject shopItemPrefab;
+ [SerializeField] private Transform itemsOwnedContainer;
  
  //Purchasing
  [SerializeField] private GameObject comfirmPurchasePrompt;
@@ -34,8 +35,16 @@ public class Shop : MonoBehaviour
      GameObject item = Instantiate(shopItemPrefab, shopContainer);
 
      item.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(shopItem));
+     
      item.transform.GetChild(1).GetComponent<Image>().sprite = shopItem.itemSprite;
      item.transform.GetChild(2).GetComponent<Text>().text = shopItem.itemPrice.ToString();
+     if (PlayerPrefs.HasKey(shopItem.name))
+     {
+      if (shopItem.isOwned)
+      {
+       item.transform.GetChild(1).GetComponent<Image>().color = Color.grey;
+      }
+     }
   }
  }
 
