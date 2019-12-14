@@ -13,6 +13,8 @@ public class Shop : MonoBehaviour
  //Showing the catalog of items
  [SerializeField] private Transform shopContainer;
  [SerializeField] private GameObject shopItemPrefab;
+ 
+ [SerializeField] private GameObject ownedItemPrefab;
  [SerializeField] private Transform itemsOwnedContainer;
  
  //Purchasing
@@ -34,29 +36,33 @@ public class Shop : MonoBehaviour
      ShopItem shopItem = _shopItems[i];
      GameObject item = Instantiate(shopItemPrefab, shopContainer);
 
-     item.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(shopItem));
-     
      item.transform.GetChild(1).GetComponent<Image>().sprite = shopItem.itemSprite;
      item.transform.GetChild(2).GetComponent<Text>().text = shopItem.itemPrice.ToString();
-     if (PlayerPrefs.HasKey(shopItem.name))
-     {
+     
       if (shopItem.isOwned)
       {
-       item.transform.GetChild(1).GetComponent<Image>().color = Color.grey;
+       item.transform.GetChild(0).GetComponent<Image>().color = Color.gray;
+       item.transform.GetChild(1).GetComponent<Image>().color = Color.gray;
+       GameObject ownedItem = Instantiate(ownedItemPrefab, itemsOwnedContainer);
+       ownedItem.transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
+       item.transform.GetChild(2).GetComponent<Text>().text = "Owned";
       }
-     }
+      else
+      {
+       item.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(shopItem, item));
+      }
   }
  }
 
  //when you click on a shop item
- void OnButtonClick(ShopItem shopItem)
+ void OnButtonClick(ShopItem shopItem, GameObject item)
  {
   if (PlayerPrefs.HasKey("coinsPickedUp"))
   {
    if (PlayerPrefs.GetInt("coinsPickedUp") >= shopItem.itemPrice)
    {
     Debug.Log("You can afford " + shopItem.name + " at " + shopItem.itemPrice + " coins");
-    comfirmPurchaseButton.GetComponent<Button>().onClick.AddListener(() => OnBuyButtonClick(shopItem));
+    comfirmPurchaseButton.GetComponent<Button>().onClick.AddListener(() => OnBuyButtonClick(shopItem, item));
     comfirmPurchaseText.text = shopItem.name + " for " + shopItem.itemPrice + " coins?";
     comfirmPurchasePrompt.SetActive(true);
    }
@@ -72,8 +78,15 @@ public class Shop : MonoBehaviour
   }
  }
 
- void OnBuyButtonClick(ShopItem shopItem)
+ void OnBuyButtonClick(ShopItem shopItem, GameObject item)
  {
+  shopItem.isOwned = true;
+  GameObject ownedItem = Instantiate(ownedItemPrefab, itemsOwnedContainer);
+  ownedItem.transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
+  item.GetComponent<Button>().interactable = false;
+  item.transform.GetChild(0).GetComponent<Image>().color = Color.gray;
+  item.transform.GetChild(1).GetComponent<Image>().color = Color.gray;
+  item.transform.GetChild(2).GetComponent<Text>().text = "Owned";
   Debug.Log("Purchased " + shopItem.name);
  }
 
