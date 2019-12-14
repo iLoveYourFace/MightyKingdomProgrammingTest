@@ -22,6 +22,8 @@ public class Shop : MonoBehaviour
  [SerializeField] private GameObject comfirmPurchaseButton;
  [SerializeField] private GameObject insufficentFundsPrompt;
  [SerializeField] private Text comfirmPurchaseText;
+
+ private GamplayHUD _gamplayHud;
  
  private void Start()
  {
@@ -75,18 +77,29 @@ public class Shop : MonoBehaviour
   else
   {
    Debug.Log("Error processing purchase of " + shopItem.name);
+   insufficentFundsPrompt.SetActive(true);
   }
  }
 
  void OnBuyButtonClick(ShopItem shopItem, GameObject item)
  {
   shopItem.isOwned = true;
+  
+  //show purchased item
   GameObject ownedItem = Instantiate(ownedItemPrefab, itemsOwnedContainer);
   ownedItem.transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
+  
+  //The button can no longer be interacted with, making UI reflect this
   item.GetComponent<Button>().interactable = false;
   item.transform.GetChild(0).GetComponent<Image>().color = Color.gray;
   item.transform.GetChild(1).GetComponent<Image>().color = Color.gray;
   item.transform.GetChild(2).GetComponent<Text>().text = "Owned";
+
+  //subtract coins and update coin text
+  PlayerPrefs.SetInt("coinsPickedUp", PlayerPrefs.GetInt("coinsPickedUp") - shopItem.itemPrice);
+  _gamplayHud = FindObjectOfType<GamplayHUD>();
+  _gamplayHud.UpdateCoinText(PlayerPrefs.GetInt("coinsPickedUp"));
+  
   Debug.Log("Purchased " + shopItem.name);
  }
 
