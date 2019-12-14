@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Chocolate
   m_EditorClassIdentifier: 
   itemName: Chocolate
-  itemPrice: 50
+  itemPrice: 10
   itemSprite: {fileID: 21300000, guid: b5323171a0442254bb960e5bbdfe9347, type: 3}
-  isOwned: 0
+  isOwned: 1

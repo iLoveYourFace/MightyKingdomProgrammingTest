@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blue Icing
   m_EditorClassIdentifier: 
   itemName: Blue Icing
-  itemPrice: 50
+  itemPrice: 15
   itemSprite: {fileID: 21300000, guid: ee3c5d39741d3f545b6733705861d99d, type: 3}
   isOwned: 0
