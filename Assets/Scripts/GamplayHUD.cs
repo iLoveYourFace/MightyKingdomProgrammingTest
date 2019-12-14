@@ -9,6 +9,7 @@ public class GamplayHUD : MonoBehaviour
     private int scoreCount;
     public Text highscoreText;
     public GameObject newHighScoreUI;
+    public GameObject pauseButton;
     
 
     public Text coinsCollected;
@@ -32,6 +33,7 @@ public class GamplayHUD : MonoBehaviour
         endScreenText.text = "YOU SCORED\n" + scoreCount + "\nBEFORE DYING";
         scoreText.text = "";
         endScreen.SetActive(true);
+        pauseButton.SetActive(false);
     }
 
     public void UpdateHighscore()

@@ -26,6 +26,8 @@ public class ScoreTracking : MonoBehaviour
         }
         
         _gamplayHud.UpdateCoinText(coinsPickedUp);
+        
+        _gamplayHud.UpdateCoinText(coinsPickedUp);
         StartCoroutine(AddToScoreEverySecond());
     }
 

@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - Shop
     - ShopItem
     - SoundManager
+    - TimeScaleZero
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
     UnityEditor.Graphs.dll:
@@ -127,6 +128,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11434}
     - Class: 114
       Script: {instanceID: 11442}
+    - Class: 114
+      Script: {instanceID: 76232}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -316,7 +319,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 3cc3851cd59d48175a980952a7605c27
+      Hash: 23b7845ebb233b26ad46c4961455cfb7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GamplayHUD
@@ -644,6 +647,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TimeScaleZero
   platform: 13
   scenePathNames:
   - Assets/Scenes/Main.unity

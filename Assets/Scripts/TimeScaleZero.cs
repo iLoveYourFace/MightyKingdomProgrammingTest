@@ -5,26 +5,10 @@ using UnityEngine;
 public class TimeScaleZero : MonoBehaviour
 {
     private bool timeStopped;
-    // Start is called before the first frame update
+    
     void Start()
     {
         SetTimeScaleZero();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (timeStopped)
-            {
-                SetTimeScaleOne();
-            }
-            else
-            {
-                SetTimeScaleZero();
-            }
-        }
     }
 
     public void SetTimeScaleZero()
@@ -37,5 +21,17 @@ public class TimeScaleZero : MonoBehaviour
     {
         Time.timeScale = 1;
         timeStopped = false;
+    }
+
+    public void ToggleTime()
+    {
+        if (timeStopped)
+        {
+            SetTimeScaleOne();
+        }
+        else
+        {
+            SetTimeScaleZero();
+        }
     }
 }
