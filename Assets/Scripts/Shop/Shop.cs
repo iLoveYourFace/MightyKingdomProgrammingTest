@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 //Creates and manages the shop
@@ -33,6 +34,7 @@ public class Shop : MonoBehaviour
 //Generate the store catalog. Setting the price and sprite for each item
  void PopulateShop()
  {
+  Debug.Log("PopulatingStore");
   for (int i = 0; i < _shopItems.Length; i++)
   {
      ShopItem shopItem = _shopItems[i];
@@ -64,6 +66,7 @@ public class Shop : MonoBehaviour
    if (PlayerPrefs.GetInt("coinsPickedUp") >= shopItem.itemPrice)
    {
     Debug.Log("You can afford " + shopItem.name + " at " + shopItem.itemPrice + " coins");
+    comfirmPurchaseButton.GetComponent<Button>().onClick.RemoveAllListeners();
     comfirmPurchaseButton.GetComponent<Button>().onClick.AddListener(() => OnBuyButtonClick(shopItem, item));
     comfirmPurchaseText.text = shopItem.name + " for " + shopItem.itemPrice + " coins?";
     comfirmPurchasePrompt.SetActive(true);
