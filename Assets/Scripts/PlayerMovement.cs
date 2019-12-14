@@ -23,9 +23,19 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetButtonDown("Jump"))
         {
             tryJump = true;
+        }
+#endif
+
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                tryJump = true;
+            }
         }
 
         if (isGrounded)
@@ -51,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = fallSpeed;
         }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        else if (rb.velocity.y > 0 &&  Input.touchCount <= 0) //!Input.GetButton("Jump") 
         {
             rb.gravityScale = smallJumpVelocity;
             JumpAnimation();
