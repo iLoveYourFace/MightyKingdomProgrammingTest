@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Updating and displaying HUD and UI elements
 public class GamplayHUD : MonoBehaviour
 {
-    public Text scoreText;
-    private int scoreCount;
-    public Text highscoreText;
+    //UI Objects
     public GameObject newHighScoreUI;
     public GameObject pauseButton;
-    
-
-    public Text coinsCollected;
     public GameObject endScreen;
+    
+    //Text Elements
+    public Text coinsCollected;
+    public Text scoreText;
+    public Text highscoreText;
     public Text endScreenText;
+    
+    private int scoreCount;
 
     public void UpdateScoreText(int newScore)
     {
@@ -28,6 +31,7 @@ public class GamplayHUD : MonoBehaviour
         coinsCollected.text = newCoin.ToString();
     }
 
+    //Changes that happen when the player dies ie. Endscreen
     public void IsDead()
     {
         endScreenText.text = "YOU SCORED\n" + scoreCount + "\nBEFORE DYING";
@@ -36,6 +40,7 @@ public class GamplayHUD : MonoBehaviour
         pauseButton.SetActive(false);
     }
 
+    //Save the new highscore 
     public void UpdateHighscore()
     {
         if (PlayerPrefs.HasKey("highScore"))

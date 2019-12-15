@@ -58,7 +58,7 @@ public class Shop : MonoBehaviour
   }
  }
 
- //when you click on a shop item
+ //When you click on a shop item
  void OnButtonClick(ShopItem shopItem, GameObject item)
  {
   if (PlayerPrefs.HasKey("coinsPickedUp"))
@@ -84,11 +84,12 @@ public class Shop : MonoBehaviour
   }
  }
 
+ //When the confirm purchase button is clicked
  void OnBuyButtonClick(ShopItem shopItem, GameObject item)
  {
   shopItem.isOwned = true;
   
-  //show purchased item
+  //Show purchased item
   GameObject ownedItem = Instantiate(ownedItemPrefab, itemsOwnedContainer);
   ownedItem.transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
   
@@ -98,7 +99,7 @@ public class Shop : MonoBehaviour
   item.transform.GetChild(1).GetComponent<Image>().color = Color.gray;
   item.transform.GetChild(2).GetComponent<Text>().text = "Owned";
 
-  //subtract coins and update coin text
+  //Subtract coins and update coin text
   PlayerPrefs.SetInt("coinsPickedUp", PlayerPrefs.GetInt("coinsPickedUp") - shopItem.itemPrice);
   _gamplayHud = FindObjectOfType<GamplayHUD>();
   _gamplayHud.UpdateCoinText(PlayerPrefs.GetInt("coinsPickedUp"));

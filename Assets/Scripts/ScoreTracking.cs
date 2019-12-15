@@ -2,33 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Tracks score/coin data
 public class ScoreTracking : MonoBehaviour
 {
     public int coinsPickedUp;
     private GamplayHUD _gamplayHud;
     public bool isDead = false;
     public int highScore;
-
     public int score;
+    [SerializeField] private int scorePerSecond = 100;
+    
     void Start()
+    {
+        InitializeSaveData();
+        
+        _gamplayHud = FindObjectOfType<GamplayHUD>();
+        _gamplayHud.UpdateHighScoreUI(highScore);
+        _gamplayHud.UpdateCoinText(coinsPickedUp);
+
+        StartCoroutine(AddToScoreEverySecond());
+    }
+
+    void InitializeSaveData()
     {
         if (PlayerPrefs.HasKey("highScore"))
         {
             highScore = PlayerPrefs.GetInt("highScore");
         }
         
-        _gamplayHud = FindObjectOfType<GamplayHUD>();
-        _gamplayHud.UpdateHighScoreUI(highScore);
-        
         if (PlayerPrefs.HasKey("coinsPickedUp"))
         {
             coinsPickedUp = PlayerPrefs.GetInt("coinsPickedUp");
         }
-        
-        _gamplayHud.UpdateCoinText(coinsPickedUp);
-        
-        _gamplayHud.UpdateCoinText(coinsPickedUp);
-        StartCoroutine(AddToScoreEverySecond());
     }
 
     public void AddToScore(int scoreToAdd)
@@ -40,12 +45,13 @@ public class ScoreTracking : MonoBehaviour
 
     public void AddToScore()
     {
-        score += 100;
+        score += scorePerSecond;
         CheckIfNewHighScore();
         _gamplayHud.UpdateScoreText(score);
         StartCoroutine(AddToScoreEverySecond());
     }
 
+    //Score is Incremented every second while the player is alive
     IEnumerator AddToScoreEverySecond()
     {
         yield return new WaitForSeconds(1f);
@@ -55,12 +61,14 @@ public class ScoreTracking : MonoBehaviour
         }
     }
     
+    //When a coin is collected
     public void AddToCoinsPickedUp(int coinsAdded)
     {
         coinsPickedUp += coinsAdded;
         _gamplayHud.UpdateCoinText(coinsPickedUp);
     }
 
+    //Check if the current score is the highest score yet and save it as the highscore if it is
     public void CheckIfNewHighScore()
     {
         if (score > highScore)

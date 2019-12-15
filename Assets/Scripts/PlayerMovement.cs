@@ -2,33 +2,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
+//Used to control the character and its animations
 public class PlayerMovement : MonoBehaviour
 {
+    //Jump settings
     [SerializeField] private float jumpVelocity = 5f;
     [SerializeField] private float fallSpeed = 2f;
     [SerializeField] private float smallJumpVelocity = 2f;
     [SerializeField] private float defaultGravityScale = 2f;
     
     private bool tryJump;
-    private Rigidbody2D rb;
     private bool isGrounded;
 
+    private Rigidbody2D playerRigidbody2D;
     public Animator _animator;
     
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        playerRigidbody2D = GetComponent<Rigidbody2D>();
     }
+    
     void Update()
     {
-#if UNITY_EDITOR
+        //Read inputs to see if user wants to jump
+        #if UNITY_EDITOR
         if (Input.GetButtonDown("Jump"))
         {
             tryJump = true;
         }
-#endif
+        #endif
 
         if (Input.touchCount > 0)
         {
@@ -44,37 +47,44 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetBool("Jump", false);
         }
     }
+    
     private void FixedUpdate()
     {
+        //If the user is trying to jump and player is on the ground then the player will jump
         if (tryJump && isGrounded)
         {
             Jump();
             tryJump = false;
         }
 
-        if (rb.velocity.y < -1f)
+        //If the player's velocity is negative then they are falling
+        if (playerRigidbody2D.velocity.y < 0f)
         {
             FallAnimtion();
+            playerRigidbody2D.gravityScale = fallSpeed;
         }
-        
-        if (rb.velocity.y < 0f)
+        #if UNITY_EDITOR
+        else if (playerRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
         {
-            rb.gravityScale = fallSpeed;
+            playerRigidbody2D.gravityScale = smallJumpVelocity;
+            JumpAnimation();
         }
-        else if (rb.velocity.y > 0 &&  Input.touchCount <= 0) //!Input.GetButton("Jump") 
+        #elif UNITY_ANDROID
+        else if (rb.velocity.y > 0 && Input.touchCount <= 0)
         {
             rb.gravityScale = smallJumpVelocity;
             JumpAnimation();
         }
+        #endif
         else
         {
-            rb.gravityScale = defaultGravityScale;
+            playerRigidbody2D.gravityScale = defaultGravityScale;
         }
     }
     private void Jump()
     {
         JumpAnimation();
-        rb.AddForce(Vector2.up * jumpVelocity , ForceMode2D.Impulse);
+        playerRigidbody2D.AddForce(Vector2.up * jumpVelocity , ForceMode2D.Impulse);
     }
 
     void JumpAnimation()
