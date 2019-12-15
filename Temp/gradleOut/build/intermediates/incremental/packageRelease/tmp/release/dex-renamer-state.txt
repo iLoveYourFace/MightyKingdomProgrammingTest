@@ -1,4 +1,4 @@
-#Sun Dec 15 05:58:41 AEST 2019
+#Sun Dec 15 20:09:39 AEST 2019
 base.0=C\:\\Users\\TechFast Australia\\Desktop\\MightyKingdomProgrammingTest\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
 path.0=classes.dex
 renamed.0=classes.dex

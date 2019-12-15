@@ -271,7 +271,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: c61dd8093ec8b215f22bd3ccb7443692
+      Hash: 5b81e2e71f3b9b8a8105bd502240e57c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ScoreTracking
@@ -319,7 +319,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 23b7845ebb233b26ad46c4961455cfb7
+      Hash: 444934ccdcf6ed63300c95b17925146e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GamplayHUD
@@ -361,7 +361,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: af72aab8faa9bd725951ddab68ac28cc
+      Hash: 1ad0d1c32b3beebceb064d862c59e35b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SoundManager

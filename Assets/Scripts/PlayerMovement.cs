@@ -64,16 +64,16 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody2D.gravityScale = fallSpeed;
         }
         //If the players velocity is going upwards and they aren't still holding jump key then they doing a small jump
-        #if UNITY_EDITOR
+        #if UNITY_EDITOR || UNITY_WEBGL
         else if (playerRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             playerRigidbody2D.gravityScale = smallJumpVelocity;
             JumpAnimation();
         }
         #elif UNITY_ANDROID
-        else if (rb.velocity.y > 0 && Input.touchCount <= 0)
+        else if (playerRigidbody2D.velocity.y > 0 && Input.touchCount <= 0)
         {
-            rb.gravityScale = smallJumpVelocity;
+            playerRigidbody2D.gravityScale = smallJumpVelocity;
             JumpAnimation();
         }
         #endif
