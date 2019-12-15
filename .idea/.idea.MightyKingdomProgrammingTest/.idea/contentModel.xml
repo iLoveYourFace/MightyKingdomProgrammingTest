@@ -14,6 +14,7 @@
           <e p="LevelGenerator.cs" t="Include" />
           <e p="LevelScroll.cs" t="Include" />
           <e p="ObjectPooler.cs" t="Include" />
+          <e p="PlatformDependentUI.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="SceneManagerScript.cs" t="Include" />
           <e p="ScoreTracking.cs" t="Include" />

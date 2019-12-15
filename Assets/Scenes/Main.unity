@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 26050851}
   - component: {fileID: 26050852}
   - component: {fileID: 26050853}
+  - component: {fileID: 26050854}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -313,6 +314,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da592b7f7270ef648888449714fd9fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &26050854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26050845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611b4d15d65115e4584946b48ffa536f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapToJump: {fileID: 1018815318}
+  tapPlusHold: {fileID: 1455794830}
+  tapToPlayAgain: {fileID: 1199634058}
+  endScreen: {fileID: 1558278338}
 --- !u!1 &67744105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,7 +3072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690588623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.72, y: 3.3426454, z: 0}
+  m_LocalPosition: {x: -9.72, y: 3.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 826602514}
@@ -5303,7 +5320,7 @@ GameObject:
   - component: {fileID: 1199634058}
   - component: {fileID: 1199634060}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PlayAgain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6366,7 +6383,7 @@ GameObject:
   - component: {fileID: 1455794831}
   - component: {fileID: 1455794830}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: TapPlusHold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -26,12 +26,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Read inputs to see if user wants to jump
-        #if UNITY_EDITOR
         if (Input.GetButtonDown("Jump"))
         {
             tryJump = true;
         }
-        #endif
 
         if (Input.touchCount > 0)
         {
@@ -64,19 +62,19 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody2D.gravityScale = fallSpeed;
         }
         //If the players velocity is going upwards and they aren't still holding jump key then they doing a small jump
-        #if UNITY_EDITOR || UNITY_WEBGL
-        else if (playerRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            playerRigidbody2D.gravityScale = smallJumpVelocity;
-            JumpAnimation();
-        }
-        #elif UNITY_ANDROID
+#if UNITY_ANDROID
         else if (playerRigidbody2D.velocity.y > 0 && Input.touchCount <= 0)
         {
             playerRigidbody2D.gravityScale = smallJumpVelocity;
             JumpAnimation();
         }
-        #endif
+#else 
+        else if (playerRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            playerRigidbody2D.gravityScale = smallJumpVelocity;
+            JumpAnimation();
+        }
+#endif
         //Else the player is doing a big jump
         else
         {
