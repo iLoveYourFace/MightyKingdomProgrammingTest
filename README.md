@@ -1,8 +1,9 @@
 # MightyKingdomProgrammingTest
 
-#Play it here!
+# Play it here!
 
 WebGL Itch.io Link - [https://iloveyourface.itch.io/mkt?secret=xi3WMTxQAngd2UbkKb31Kk6hSPE](https://iloveyourface.itch.io/mkt?secret=xi3WMTxQAngd2UbkKb31Kk6hSPE)
+___
 
 --Functional Requirements--
 
