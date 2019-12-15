@@ -5,19 +5,19 @@
 
 ● A player character that can:
 
-  ○ Jump
+ / ○ Jump
 
-  ○ Interact with obstacles
+ / ○ Interact with obstacles
 
-  ○ Collect items
+ / ○ Collect items
 
 ● A side-scrolling environment
 
-  ○ Platforms
+ / ○ Platforms
 
-  ○ Ground to run on
+ / ○ Ground to run on
 
-  ○ Endless
+ / ○ Endless
 
 ● Obstacles that trigger an end state
 
@@ -32,6 +32,8 @@
 
 
 --My Process--
+
+
 Jump - The first most important piece of functionality was the player movement. Because it is a side scrolling infinite runner, I only need to implement a jump as I would have the level moving instead of the player.
 
 Platforms - Next was the platforms that move to give the illusion of the player moving forward. I had multiple prefabs of platforms and would spawn them at random heights after detecting the previous platform had hit a trigger so that were spawned apart and not rapidly spawning. The platforms would then get destroyed offscreen. We now have an infinite runner, kinda.
