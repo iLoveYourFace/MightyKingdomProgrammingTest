@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Used for pausing the game
 public class TimeScaleZero : MonoBehaviour
 {
     private bool timeStopped;

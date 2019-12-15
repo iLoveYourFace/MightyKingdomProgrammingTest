@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             FallAnimtion();
             playerRigidbody2D.gravityScale = fallSpeed;
         }
+        //If the players velocity is going upwards and they aren't still holding jump key then they doing a small jump
         #if UNITY_EDITOR
         else if (playerRigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
         {
@@ -76,11 +77,14 @@ public class PlayerMovement : MonoBehaviour
             JumpAnimation();
         }
         #endif
+        //Else the player is doing a big jump
         else
         {
             playerRigidbody2D.gravityScale = defaultGravityScale;
         }
     }
+    
+    //Play jump animation and make the player jump
     private void Jump()
     {
         JumpAnimation();
@@ -99,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool("Jump", false);
     }
 
+    //If the player is one the ground, then ..well they are on the ground.
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ground"))

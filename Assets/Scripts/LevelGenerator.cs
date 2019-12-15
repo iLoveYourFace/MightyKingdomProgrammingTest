@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+//Spawns the platforms of the level
 public class LevelGenerator : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
     public GameObject level;
-    //how far away do we the platforms to spawn away from each other
+    //How far away do we the platforms to spawn away from each other
     public float spawnDistance = 29;
-    //the height variance of how the platforms spawn
+    //The height variance of how the platforms spawn
     public Vector2 levelPlatformSpawnHeightRange = new Vector2(-5f, 5f);
-    //how high the previous platform was spawned at *used to determine if the player could possibly jump to the next platform
+    //How high the previous platform was spawned at *used to determine if the player could possibly jump to the next platform
     private float previousHeight;
-    //how high can the player jump
+    //How high can the player jump
     public float jumpableHeight = 2.5f;
 
     public GameObject[] obstaclesAndPickups;
@@ -26,25 +27,27 @@ public class LevelGenerator : MonoBehaviour
         StartCoroutine(SpawnRandom());
     }
 
-    //if we have reached the end of a platform then we want to spawn the next one
+    //If we have reached the end of a platform then we want to spawn the next one
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(("PlatformEnd")))
         {
-            //choose a random height to spawn it
+            //Choose a random height to spawn it
             float randomSpawnHeight = Random.Range(levelPlatformSpawnHeightRange[0], levelPlatformSpawnHeightRange[1]);
             
-            //make sure the platform is actually reachable for the player
+            //Make sure the platform is actually reachable for the player
             if (previousHeight + jumpableHeight < randomSpawnHeight)
             {
                 randomSpawnHeight = previousHeight + jumpableHeight;
             }
             
             previousHeight = randomSpawnHeight;
+            //Spawn the platform
             _objectPooler.GetObjectFromPool(new Vector2(level.transform.position.x + spawnDistance, randomSpawnHeight));
         }
     }
 
+    //Randomly spawn an item (coin)
     IEnumerator SpawnRandom()
     {
         float timeToSpawnNext = Random.Range(0.1f, 8f);

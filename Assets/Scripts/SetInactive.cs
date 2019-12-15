@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Despawns objects that hit the trigger off the screen
 public class SetInactive : MonoBehaviour
 {
 

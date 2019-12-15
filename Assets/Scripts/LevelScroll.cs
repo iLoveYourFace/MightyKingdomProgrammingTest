@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Makes the Platforms move across the screen
 public class LevelScroll : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed = 5f;
@@ -11,6 +12,7 @@ public class LevelScroll : MonoBehaviour
     public float speedToIncrementPercentage = 20f;
     private float playerRunSpeed = .5f;
     private float audioPitch = .8f;
+    
     public Animator _animator;
     private SoundManager _soundManager;
     
@@ -27,6 +29,7 @@ public class LevelScroll : MonoBehaviour
         gameObject.transform.position += scrollSpeed * Time.deltaTime * Vector3.left;
     }
 
+    //We want the scrolling to speed up over time to increase the difficulty as well speed up the music and animations to reflect the speed
     IEnumerator SpeedUp()
     {
         yield return new WaitForSeconds(timeUntilScrollingIsSpedUp);

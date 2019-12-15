@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//If a player hits a death trigger then they die!
 public class DeathTrigger : MonoBehaviour
 {
+    //These are all the scripts that need to know that the player has died
     private GamplayHUD _gamplayHud;
     private ScoreTracking _scoreTracking;
     private SoundManager _soundManager;
@@ -18,6 +20,7 @@ public class DeathTrigger : MonoBehaviour
         _timeScaleZero = FindObjectOfType<TimeScaleZero>();
     }
 
+    //When the player enters the death trigger then we need to make these changes
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
