@@ -1,19 +1,34 @@
 # MightyKingdomProgrammingTest
 
 --Functional Requirements--
+
+
 ● A player character that can:
-○ Jump
-○ Interact with obstacles
-○ Collect items
+
+  ○ Jump
+
+  ○ Interact with obstacles
+
+  ○ Collect items
+
 ● A side-scrolling environment
-○ Platforms
-○ Ground to run on
-○ Endless
+
+  ○ Platforms
+
+  ○ Ground to run on
+
+  ○ Endless
+
 ● Obstacles that trigger an end state
+
 ● Items that the player can pick up
+
 ● A scoring system
+
 ● An end state
+
 ● Functionality that can be built directly to mobile
+
 
 
 --My Process--
